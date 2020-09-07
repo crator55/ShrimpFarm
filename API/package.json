@@ -1,0 +1,27 @@
+{
+  "name": "shrimpfarm",
+  "version": "1.0.0",
+  "description": "Application for a shrimp farm.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crator55/ShrimpFarm.git"
+  },
+  "author": "Diego Galarza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/crator55/ShrimpFarm/issues"
+  },
+  "homepage": "https://github.com/crator55/ShrimpFarm#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
