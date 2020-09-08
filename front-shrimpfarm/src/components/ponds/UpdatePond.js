@@ -4,21 +4,22 @@ import clientAxios from '../../config/axios';
 import Swal from 'sweetalert2';
 function UpdatePond(props){
 
-
     const{id}=props.match.params;
     const[pond,pondData]=useState({
         name:'',
         areaSize:0,
         location:''
     });
-    const responseApi= async ()=>{
-        const query= await clientAxios.get(`/ponds/${id}`);
-        pondData(query.data);
-    }
+   
     useEffect(
         ()=>{
+
+            const responseApi= async ()=>{
+                const query= await clientAxios.get(`/ponds/${id}`);
+                pondData(query.data);
+            }
         responseApi();
-    },[]);
+    },[id]);
 
 const sendPond =e =>{
     e.preventDefault();

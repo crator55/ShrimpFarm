@@ -82,7 +82,7 @@ const addPond =e =>{
                         <input 
                         type="submit" 
                         className="btn btn-azul" 
-                        value="Agregar Cliente"
+                        value="Add Pond"
                         disabled={validatePond()}
                         />
                     </div>

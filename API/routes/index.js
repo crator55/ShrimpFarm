@@ -11,6 +11,8 @@ router.get('/farms/:idFarm',farmsController.showFarm);
 router.put('/farms/:idFarm',farmsController.updateFarm);
 router.delete('/farms/:idFarm',farmsController.deleteFarm);
 router.get('/farms/area/:idFarm',farmsController.getArea);
+router.get('/farms/ponds/:idFarm',farmsController.getOnlyPonds);
+
 
 router.post('/ponds',pondsController.newPond);
 router.get('/ponds',pondsController.showPonds);

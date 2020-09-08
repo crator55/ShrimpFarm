@@ -3,14 +3,26 @@ import FormFindPond from './FormFindPond';
 import FormPonds from './FormPonds';
 import clientAxios from '../../config/axios';
 import Swal from 'sweetalert2';
-
-function NewFarm(){
-
+import {withRouter} from 'react-router-dom';
+function NewFarm({history}){
     const [search,saveSearch]=useState('');
     const [ponds,savePonds]=useState([]);
     const [totalSize,saveTotal]=useState(0);
+    const[farmtags,saveFarm]=useState({
+        name:'',
+        location:''
+    });
     useEffect(
         ()=>{
+            const updateTotalSize=()=>{
+                if (ponds.length===0) {
+                    saveTotal(0);
+                    return;
+                }
+                let newTotal=0;
+                ponds.map(pond=>newTotal+=(pond.areaSize));
+                saveTotal(newTotal);
+            }
         updateTotalSize();
            
     },[ponds])
@@ -39,22 +51,14 @@ function NewFarm(){
     saveSearch(e.target.value);
     }
 
-    const updateTotalSize=()=>{
-        if (ponds.length===0) {
-            saveTotal(0);
-            return;
-        }
-        let newTotal=0;
-        ponds.map(pond=>newTotal+=(pond.areaSize));
-        saveTotal(newTotal);
-    }
+   
     const submitFarm = async e =>{
         e.preventDefault();
         const farm ={
 
-            "name":"farm3",
+            "name":farmtags.name,
             "areaSize":totalSize,
-            "location":"farm3",
+            "location":farmtags.location,
             "ponds":ponds
         }
         const respond= await clientAxios.post('/farms',farm);
@@ -64,6 +68,7 @@ function NewFarm(){
                 title: respond.data.message,
                 text:'New farm added succesfully'
             })
+            history.push('/farms');
         }else{
             Swal.fire({
                 icon: 'error',
@@ -72,10 +77,18 @@ function NewFarm(){
             })
         }
     }
+ 
+    const updateState= e =>{
+        saveFarm({
+            ...farmtags,
+            [e.target.name]:e.target.value
+        })
+
+    }
     return(
 <Fragment>
         <h2>New Farm</h2>
-            
+                    
             <FormFindPond
             searchPond={searchPond}
             readData={readData}
@@ -84,7 +97,7 @@ function NewFarm(){
                 <ul className="resumen">
                     {ponds.map((pond,index)=>(
                     <FormPonds
-                        key={pond.pond}
+                        key={index}
                         pond={pond}
                         deletePond={deletePond}
                     />
@@ -96,6 +109,24 @@ function NewFarm(){
                                <form
                                onSubmit={submitFarm}
                                >
+                                  
+                        <div className="campo">
+                            <label>Name:</label>
+                                <input 
+                                type="text" 
+                                name="name"
+                                onChange={updateState}
+                                />
+                        </div>
+                        <div className="campo">
+                            <label>Location:</label>
+                                <input 
+                                type="text" 
+                                name="location"
+                                onChange={updateState}
+                                />
+                        </div>
+                  
                                    <input type="submit"
                                         className="btn btn-verde btn-block"
                                         value="Realizar Pedido"/>
@@ -107,4 +138,4 @@ function NewFarm(){
             </Fragment>
     )
 }
-export default NewFarm;
+export default withRouter(NewFarm);

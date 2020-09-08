@@ -7,6 +7,7 @@ import Ponds from  './components/ponds/Ponds';
 import NewPond from './components/ponds/NewPond';
 import UpdatePond from './components/ponds/UpdatePond';
 import NewFarm from './components/farms/NewFarm';
+import UpdateFarms from './components/farms/UpdateFarms';
 function App(){
   return(
     <Router>
@@ -21,6 +22,7 @@ function App(){
                   <Route exact path="/pond/update/:id" component={UpdatePond}/>
                   <Route exact path="/farms" component={Farms}/>
                   <Route exact path="/farms/new" component={NewFarm}/>
+                  <Route exact path="/farms/update/:id" component={UpdateFarms}/>
                 </Switch>
               </main>
           </div>

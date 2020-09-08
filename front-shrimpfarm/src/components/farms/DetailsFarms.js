@@ -1,10 +1,12 @@
 import React,{useEffect,useState} from 'react';
 import clientAxios from '../../config/axios';
 import Swal from 'sweetalert2';
+import {Link} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 function DetailsFarms({farm}){
 
 
-    const{name,areaSize,_id}=farm;
+    const{name,location,_id}=farm;
 
     const [area,saveFarms]=useState([]);
 
@@ -15,6 +17,7 @@ function DetailsFarms({farm}){
         }
         respondApi();
     },[farm])
+
     const deletePond = idPond =>{
         Swal.fire({
             title: 'Are you sure?',
@@ -46,16 +49,16 @@ function DetailsFarms({farm}){
         <li className="pedido">
         <div className="info-pedido">
             <p className="id">{name}</p>
-            <p className="nombre">{areaSize}</p>
+            <p className="nombre">{location}</p>
             <div className="articulos-pedido">
-                <p className="productos">Artículos Pedido: </p>
+                <p className="productos">Ponds: </p>
                 <ul>
                     {farm.ponds.map(element=>
                         (
                             <li key={farm._id+element._id}>
-                                <p>{element.pond.name}</p>
-                                <p>{element.pond.areaSize}</p>
-                                <p>{element.pond.Location}</p>
+                                <p>Name: {element.pond.name}</p>
+                                <p>Area size: {element.pond.areaSize}</p>
+                                <p>Location: {element.pond.location}</p>
                             </li>
                         )
                         )}
@@ -63,13 +66,13 @@ function DetailsFarms({farm}){
                 </ul>
             </div>
           
-            <p className="total">Total:{area.TotalArea} </p>
+            <p className="total">Total area: {area.TotalArea} [hectareas] </p>
         </div>
         <div className="acciones">
-            <a href="#" className="btn btn-azul">
-                <i className="fas fa-pen-alt"></i>
-                Editar Pedido
-            </a>
+        <Link to={`/farms/update/${_id}`} className="btn btn-azul">
+                            <i className="fas fa-pen-alt"></i>
+                            Update pond
+                        </Link>
 
                         <button 
                         type="button" 
@@ -83,4 +86,4 @@ function DetailsFarms({farm}){
     </li>
     )
 }
-export default DetailsFarms;
+export default withRouter(DetailsFarms);

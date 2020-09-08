@@ -2,17 +2,20 @@ import React,{useEffect,useState,Fragment} from 'react';
 import clientAxios from '../../config/axios';
 import DetailsFarms from './DetailsFarms';
 import {Link} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 function Farms (){
     
     const [farms,saveFarms]=useState([]);
-
+    
     useEffect(()=>{
-        const respondApi = async()=>{
-            const respond = await clientAxios.get('/farms');
-            saveFarms(respond.data)
-        }
-        respondApi();
-    },[])
+            const respondApi = async()=>{
+
+                const respond = await clientAxios.get('/farms');
+                saveFarms(respond.data)
+            }
+            respondApi();
+    },[farms])
+
     return(
         <Fragment>
   
@@ -34,4 +37,4 @@ function Farms (){
     )
 }
 
-export default Farms;
+export default withRouter(Farms);

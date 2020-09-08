@@ -35,7 +35,7 @@ function Pond({pond}){
   }
 return(
 
-<li className="cliente">
+                <li className="cliente">
                     <div className="info-cliente">
                         <p className="nombre">{name}</p>
                         <p className="empresa">{location}</p>
@@ -46,10 +46,6 @@ return(
                         <Link to={`/pond/update/${_id}`} className="btn btn-azul">
                             <i className="fas fa-pen-alt"></i>
                             Update pond
-                        </Link>
-                        <Link to={`/farms/new`} className="btn btn-amarillo">
-                            <i className="fas fa-plus"></i>
-                           New farm
                         </Link>
                         <button 
                         type="button" 

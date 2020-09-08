@@ -92,3 +92,19 @@ exports.getArea =async(req,res,next)=>{
         next();
     }
 }
+exports.getOnlyPonds =async(req,res,next)=>{
+    try {
+        const farm =await Farms.findById(req.params.idFarm).populate({
+            path:'ponds.pond',
+            model:'Ponds'
+        });
+        if (!farm) {
+            res.json({message: 'Farm did not founded.'});
+            next();
+        }
+        res.json(farm.ponds);
+    } catch (error) {
+        console.log(error);
+        next();
+    }
+}
