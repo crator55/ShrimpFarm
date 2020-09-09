@@ -18,12 +18,11 @@ function Farms (){
 
     return(
         <Fragment>
-  
         <h2>Farms</h2>
-        <Link to={"/farms/new"} className="btn btn-verde nvo-cliente"> <i className="fas fa-plus-circle"></i>
+        <Link to={"/farms/new"} className="btn btn-green new-pond"> <i className="fas fa-plus-circle"></i>
                New Farm
             </Link>
-        <ul className="listado-pedidos">
+        <ul className="list-farms">
           {farms.map(farm=>(
             <DetailsFarms
                 key={farm._id}

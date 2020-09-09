@@ -3,21 +3,21 @@ function FormPonds(props){
     const{pond,deletePond} =props
     return(
         <li>
-        <div className="texto-producto">
-            <p className="nombre">{pond.name}</p>
-            <p className="precio">{pond.location}</p>
+        <div className="text-color">
+            <p className="name">Name: {pond.name}</p>
+            <p className="area">Location: {pond.location}</p>
         </div>
-        <div className="acciones">
-            <div className="contenedor-cantidad">
-            <p className="precio">{pond.areaSize}</p>
+        <div className="accions">
+            <div className="container-quantity">
+            <p className="area">Area: {pond.areaSize} [ha]</p>
             </div>
             <button 
             type="button" 
-            className="btn btn-rojo"
+            className="btn btn-red"
             onClick={()=>deletePond(pond.pond)}
             >
                 <i className="fas fa-minus-circle"></i>
-                    Eliminar Producto
+                    Delete Pond
             </button>
         </div>
     </li>

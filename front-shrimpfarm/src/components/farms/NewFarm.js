@@ -3,7 +3,7 @@ import FormFindPond from './FormFindPond';
 import FormPonds from './FormPonds';
 import clientAxios from '../../config/axios';
 import Swal from 'sweetalert2';
-import {withRouter} from 'react-router-dom';
+import {withRouter,Link} from 'react-router-dom';
 function NewFarm({history}){
     const [search,saveSearch]=useState('');
     const [ponds,savePonds]=useState([]);
@@ -77,7 +77,11 @@ function NewFarm({history}){
             })
         }
     }
- 
+    const validatePond=()=>{
+        const {name,location} = farmtags;  
+        let state= !name.length || !location.length
+        return state
+    }
     const updateState= e =>{
         saveFarm({
             ...farmtags,
@@ -94,7 +98,7 @@ function NewFarm({history}){
             readData={readData}
             />
 
-                <ul className="resumen">
+                <ul className="summary">
                     {ponds.map((pond,index)=>(
                     <FormPonds
                         key={index}
@@ -109,8 +113,8 @@ function NewFarm({history}){
                                <form
                                onSubmit={submitFarm}
                                >
-                                  
-                        <div className="campo">
+                                    <legend>All fields are required!</legend>
+                        <div className="field">
                             <label>Name:</label>
                                 <input 
                                 type="text" 
@@ -118,7 +122,7 @@ function NewFarm({history}){
                                 onChange={updateState}
                                 />
                         </div>
-                        <div className="campo">
+                        <div className="field">
                             <label>Location:</label>
                                 <input 
                                 type="text" 
@@ -128,12 +132,17 @@ function NewFarm({history}){
                         </div>
                   
                                    <input type="submit"
-                                        className="btn btn-verde btn-block"
-                                        value="Realizar Pedido"/>
+                                        className="btn btn-green btn-block"
+                                        value="Add new farm"
+                                        disabled={validatePond()}
+                                        />
                                </form>
                            ):null
                         }
-         
+            <Link to={`/farms`} className="btn btn-yellow">
+                            <i className="fas fa-sign-out-alt"></i>
+                            Cancel
+                        </Link>
 
             </Fragment>
     )

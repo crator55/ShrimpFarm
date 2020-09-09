@@ -1,23 +1,23 @@
 :root {
-    --fontTexto:  'Raleway', sans-serif;
+    --fontText:  'Raleway', sans-serif;
     --fontHeading: 'Staatliches', cursive;
 
     /** Colores **/
-    --azul : #00487C;
-    --rojo : #A01C48;
-    --naranja : #F58549;
-    --amarillo: #ECA400;
-    --verde : rgb(20, 131, 20);
+    --blue : #00487C;
+    --red : #A01C48;
+    --orange : #F58549;
+    --yellow: #ECA400;
+    --green : rgb(20, 131, 20);
 
-    /** gris **/
-    --gris: #969696;
-    --grisOscuro : #707070;
-    --grisClaro: rgb(243, 243, 243);
+    /** gray **/
+    --gray: #969696;
+    --grayDark : #707070;
+    --grayLight: rgb(243, 243, 243);
 }
 body {
-    background-color: var(--grisClaro);
+    background-color: var(--grayLight);
     font-size: 1.6rem;
-    font-family: var(--fontTexto);
+    font-family: var(--fontText);
 }
 html {
     
@@ -28,26 +28,26 @@ html {
     box-sizing: inherit;
 }
 a {
-    font-family: var(--fontTexto);
+    font-family: var(--fontText);
     color: black;
     text-decoration: none;
 }
-/** GLOBALES **/
+
 h1{
     font-family: var(--fontHeading);
 }
 h2 {
-    font-family: var(--fontTexto);
-    color: var(--grisOscuro);
+    font-family: var(--fontText);
+    color: var(--grayDark);
     font-size: 3rem;
 }
-.contenedor {
+.container {
     max-width: 1400px;
     margin: 0 auto;
     width: 95%;
 }
 
-/** BOTONES **/
+
 .btn-block {
     display: block!important;
     flex: 1 0  100%!important;
@@ -60,7 +60,7 @@ h2 {
     font-weight: 700;
     text-transform: uppercase;
     display: block;
-    font-family: var(--fontTexto);
+    font-family: var(--fontText);
     border: none;
     flex: 0 0 100%;
     width: 100%;
@@ -78,29 +78,29 @@ h2 {
 .btn i {
     margin-right: 1rem;
 }
-.btn-azul {
-    background-color: var(--azul);
+.btn-blue {
+    background-color: var(--blue);
 }
-.btn-rojo {
-    background-color: var(--rojo);
+.btn-red {
+    background-color: var(--red);
 }
-.btn-naranja {
-    background-color: var(--naranja);
+.btn-orange {
+    background-color: var(--orange);
 }
-.btn-amarillo {
-    background-color: var(--amarillo);
+.btn-yellow {
+    background-color: var(--yellow);
 }
-.btn-verde {
-    background-color: var(--verde);
+.btn-green {
+    background-color: var(--green);
 }
 .btn:disabled {
     opacity: .4;
 }
-.nvo-cliente {
+.new-pond {
     padding: 2rem 4rem;
     width: auto;
 }
-.btn-eliminar {
+.btn-delete {
     margin-top: 1rem;
     font-family: "Font Awesome 5 Free", Arial, Helvetica, sans-serif; 
     font-weight: 900; 
@@ -118,51 +118,51 @@ h2 {
         flex: 1 0 calc(75% - 1rem);
     }
 }
-.barra {
-    background-color: var(--azul);
+.bar {
+    background-color: var(--blue);
     padding: 2rem 0;
 }
-.barra h1 {
+.bar h1 {
     margin:0;
     color: white;
 }
-.contenido-barra {
+.content-bar {
     text-align: center;
 }
-.contenido-barra button {
+.content-bar button {
     margin-top: 2rem;
 
 }
 @media (min-width: 768px) {
-    .contenido-barra {
+    .content-bar {
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
-    .contenido-barra button {
+    .content-bar button {
         margin: 0;
     }
 }
-.contenido-principal{
+.content-principal{
     margin-top: 4rem;
 }
 
-/** Navegacion **/
+/** navegation **/
 .sidebar {
     padding-top: 1.8rem;
 }
 
-.navegacion a {
+.navegation a {
     display: block;
-    font-family: var(--fontTexto);
-    color: var(--grisOscuro);
+    font-family: var(--fontText);
+    color: var(--grayDark);
     margin-bottom: 2rem;
     font-size: 1.8rem;
     position: relative;
     padding-left: 5rem;
     padding-top: 2rem;
 }
-.navegacion a::before {
+.navegation a::before {
     display: inline-block;
     font-style: normal;
     font-variant: normal;
@@ -174,30 +174,30 @@ h2 {
     left: 0;
     top: 1rem;
 }
-.navegacion a.clientes::before {
+.navegation a.pondss::before {
     font-family: "Font Awesome 5 Free"; 
     font-weight: 900; 
     content: "\f722";
 }
-.navegacion a.productos::before {
+.navegation a.ponds::before {
     font-family: "Font Awesome 5 Free"; 
     font-weight: 900; 
     content: "\f578";
 }
-.navegacion a.pedidos::before {
+.navegation a.farms::before {
     font-family: "Font Awesome 5 Free"; 
     font-weight: 900; 
     content: "\f02d";
 }
 
-/** Caja **/
+/** box **/
 
 @media (max-width: 767px) {
-    .caja-contenido{
+    .box-content{
         margin-top: 5rem;
     }
 }
-.caja-contenido {
+.box-content {
     background-color: white;
     padding: 2rem 3rem;
     min-height: 80rem;
@@ -207,40 +207,40 @@ h2 {
     border-radius: 1rem;
 }
 
-/** Mostrar Clientes **/
-.listado-clientes,
-.listado-productos,
-.listado-pedidos {
+
+.list-ponds,
+.list-ponds,
+.list-farms {
     list-style: none;
     padding: 0;
 }
-.cliente,
-.producto,
-.pedido,
-.resumen li {
+.pond,
+.color,
+.farm,
+.summary li {
     padding: 2rem 0;
-    border-bottom: 1px solid var(--grisClaro);
+    border-bottom: 1px solid var(--grayLight);
 }
-.cliente:last-of-type,
-.producto:last-of-type, 
-.pedido:last-of-type{
+.pond:last-of-type,
+.color:last-of-type, 
+.farm:last-of-type{
     border-bottom: 0;
 }
 @media (min-width: 768px) {
-    .cliente,
-    .producto,
-    .pedido {
+    .pond,
+    .color,
+    .farm {
         display: flex;
         justify-content: space-between;
     }
-    .cliente .info-cliente,
-    .producto .info-producto,
-    .pedido .info-pedido {
+    .pond .info-pond,
+    .color .info-color,
+    .farm .info-farm {
         flex: 0 0 calc(70% - 1rem);
     }
-    .cliente .acciones,
-    .producto .acciones,
-    .pedido .acciones {
+    .pond .accions,
+    .color .accions,
+    .farm .accions {
         flex: 0 0 calc(30% - 1rem);
         padding: 2rem 0;
         display: flex;
@@ -248,72 +248,72 @@ h2 {
         justify-content: space-around;
     } 
     
-    .pedido .acciones,
-    .producto .acciones  {
+    .farm .accions,
+    .color .accions  {
         justify-content: flex-start;
     }
 }
-.acciones form {
+.accions form {
     width: 100%;
 }
-.acciones .btn {
+.accions .btn {
     display: block;
     width: 100%;
     margin-bottom: 1rem;
 }
 
 @media (min-width: 768px) {
-    .cliente .acciones a:last-of-type,
-    .producto .acciones a:last-of-type, 
-    .pedido .acciones a:last-of-type {
+    .pond .accions a:last-of-type,
+    .color .accions a:last-of-type, 
+    .farm .accions a:last-of-type {
         margin-bottom: 0;
     } 
 }
-.cliente p,
-.producto p,
-.pedido p {
+.pond p,
+.color p,
+.farm p {
     margin: 2rem 0;
 }
-.cliente .nombre,
-.producto .nombre,
-.pedido .id,
-.resumen .nombre {
+.pond .name,
+.color .name,
+.farm .id,
+.summary .name {
     font-size: 2.4rem;
-    color: var(--azul);
+    color: var(--blue);
 }
-.cliente .empresa,
-.pedido .nombre, 
-.resumen .precio{
+.pond .location,
+.farm .name, 
+.summary .area{
     font-weight: 700;
     font-size: 2rem;
 }
-.pedido .total {
+.farm .total {
     font-weight: 700;
-    color: var(--azul);
+    color: var(--blue);
     font-size: 2.4rem;
 }
-.pedido .productos {
+.farm .ponds {
     font-weight: 700;
 }
-.articulos-pedido {
+.colorFarm-farm {
     padding: 2rem;
     background-color: #f1f1f1;
 }
-.pedido ul  {
+.farm ul  {
     list-style: none;
     padding: 0;
 }
-.pedido ul li:first-of-type {
+.farm ul li:first-of-type {
     border-top: none;
 }
-.pedido ul li:last-of-type {
+.farm ul li:last-of-type {
     border-bottom: none;
 }
-.pedido ul li {
+.farm ul li {
     border-top: 1px solid #e1e1e1;
 }
 
-/** Formularios **/
+
 form {
     width:95%;
     max-width: 800px;
@@ -321,8 +321,8 @@ form {
 }
 form legend {
     font-size: 2.4rem;
-    color: var(--azul);
-    font-family: var(--fontTexto);
+    color: var(--blue);
+    font-family: var(--fontText);
     font-weight: 700;
     text-align: center;
     display: block;
@@ -330,54 +330,54 @@ form legend {
     margin-bottom: 2rem;
 }
 
-form .campo {
+form .field {
     padding: .5rem 2rem;
     display: flex;
     align-items: center;
     margin-bottom: 2rem;
 }
-form .campo label {
+form .field label {
     font-weight: bold;
-    font-family: var(--fontTexto);
+    font-family: var(--fontText);
     flex: 0 0 100px;
 }
-form .campo input:not([type="submit"]){
+form .field input:not([type="submit"]){
     padding: 1.5rem;
     flex: 1;
     border: 1px solid #e1e1e1;
 }
-form .campo input[readonly] {
+form .field input[readonly] {
     background-color: #e1e1e1;
 }
-.enviar {
+.send {
     padding: .5rem 2rem;
     display: flex;
     justify-content: flex-end;
 }
-.resumen {
+.summary {
     padding: 0;
 }
-.resumen li {
+.summary li {
     display: flex;
     justify-content: space-around;
     padding: 2rem;
 }
-.resumen li .texto-producto, 
-.resumen li .acciones  {
+.summary li .text-color, 
+.summary li .accions  {
     flex: 0 0 calc(50% - 2rem);
 }
-.resumen .acciones {
+.summary .accions {
     display: flex;
     flex-wrap: wrap;
 }
-.contenedor-cantidad {
+.container-quantity {
     display: flex;
     align-items: center;
     justify-content: space-around;
     flex:  0 0 100%;
     margin-bottom: 2rem;
 }
-.contenedor-cantidad i {
+.container-quantity i {
     flex: 0 0 4rem;
     height: 4.2rem;
     display: flex;
@@ -392,16 +392,16 @@ form .campo input[readonly] {
 .fa-plus:hover {
     cursor: pointer;
 }
-.contenedor-cantidad .fa-plus,
-.contenedor-cantidad .fa-minus  {
-    background-color: var(--azul);
+.container-quantity .fa-plus,
+.container-quantity .fa-minus  {
+    background-color: var(--blue);
 }
-.contenedor-cantidad input {
+.container-quantity input {
     flex: 1;
     padding: 1rem;
 }
 
-/** AJUSTES SWEETALERT**/
+
 .swal2-popup  .swal2-title {
     font-size: 3rem!important;
 }
@@ -418,14 +418,14 @@ form .campo input[readonly] {
     width: 60rem;
 }
 
-.ficha-cliente {
-    background-color: var(--grisClaro);
+.ficha-pond {
+    background-color: var(--grayLight);
     padding: 1rem 4rem;
 }
-h3.resumen-titulo {
+h3.summary-tittle {
     font-size: 2.4rem;
     text-align: center;
-    color: var(--azul);
+    color: var(--blue);
 }
 .total {
     font-size: 1.8rem;
@@ -435,19 +435,6 @@ h3.resumen-titulo {
     text-align: center;
 }
 .total span {
-    color: var(--azul);
+    color: var(--blue);
 }
 
-.login {
-    max-width: 520px;
-    margin: 15rem  auto 0 auto;
-    padding: 4rem 2rem;
-    background-color: var(--grisClaro);
-    border-radius: 1.5rem;
-}
-.login h2 {
-    text-align: center;
-}
-.login .contenedor-formulario {
-
-}

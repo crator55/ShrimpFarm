@@ -33,23 +33,23 @@ function Pond({pond}){
         }
       })
   }
-return(
+    return(
 
-                <li className="cliente">
-                    <div className="info-cliente">
-                        <p className="nombre">{name}</p>
-                        <p className="empresa">{location}</p>
-                        <p>{areaSize}</p>
+                <li className="pond">
+                    <div className="info-pond">
+                        <p className="name">Name: {name}</p>
+                        <p className="location">Location: {location}</p>
+                        <p>Area: {areaSize} [ha]</p>
                       
                     </div>
-                    <div className="acciones">
-                        <Link to={`/pond/update/${_id}`} className="btn btn-azul">
+                    <div className="accions">
+                        <Link to={`/pond/update/${_id}`} className="btn btn-blue">
                             <i className="fas fa-pen-alt"></i>
                             Update pond
                         </Link>
                         <button 
                         type="button" 
-                        className="btn btn-rojo btn-eliminar"
+                        className="btn btn-red btn-delete"
                         onClick={()=> deletePond(_id)}
                         >
                             <i className="fas fa-times"></i>
@@ -57,6 +57,6 @@ return(
                         </button>
                     </div>
                 </li>
-)
+    )
 }
-export default Pond 
+    export default Pond 

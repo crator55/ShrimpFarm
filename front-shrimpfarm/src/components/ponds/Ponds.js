@@ -19,10 +19,10 @@ function Ponds (){
             <h2>
                 Ponds
             </h2>
-            <Link to={"/pond/new"} className="btn btn-verde nvo-cliente"> <i className="fas fa-plus-circle"></i>
+            <Link to={"/pond/new"} className="btn btn-green new-pond"> <i className="fas fa-plus-circle"></i>
                New pond
             </Link>
-            <ul className="listado-clientes">
+            <ul className="list-ponds">
                 {
                     ponds.map(pond=>
                        (<Pond 

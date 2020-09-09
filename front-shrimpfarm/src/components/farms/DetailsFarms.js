@@ -38,26 +38,23 @@ function DetailsFarms({farm}){
                             'success'
                           )
                     }
-                  
-    
                 )
-             
             }
           })
       }
     return(
-        <li className="pedido">
-        <div className="info-pedido">
-            <p className="id">{name}</p>
-            <p className="nombre">{location}</p>
-            <div className="articulos-pedido">
-                <p className="productos">Ponds: </p>
+        <li className="farm">
+        <div className="info-farm">
+            <p className="id">Name: {name}</p>
+            <p className="name">Location: {location}</p>
+            <div className="colorFarm-farm">
+                <p className="ponds">Ponds: </p>
                 <ul>
                     {farm.ponds.map(element=>
                         (
                             <li key={farm._id+element._id}>
                                 <p>Name: {element.pond.name}</p>
-                                <p>Area size: {element.pond.areaSize}</p>
+                                <p>Area size: {element.pond.areaSize} [ha]</p>
                                 <p>Location: {element.pond.location}</p>
                             </li>
                         )
@@ -66,17 +63,17 @@ function DetailsFarms({farm}){
                 </ul>
             </div>
           
-            <p className="total">Total area: {area.TotalArea} [hectareas] </p>
+            <p className="total">Total area: {area.TotalArea} [hectares] </p>
         </div>
-        <div className="acciones">
-        <Link to={`/farms/update/${_id}`} className="btn btn-azul">
+        <div className="accions">
+        <Link to={`/farms/update/${_id}`} className="btn btn-blue">
                             <i className="fas fa-pen-alt"></i>
                             Update pond
                         </Link>
 
                         <button 
                         type="button" 
-                        className="btn btn-rojo btn-eliminar"
+                        className="btn btn-red btn-delete"
                         onClick={()=> deletePond(_id)}
                         >
                             <i className="fas fa-times"></i>

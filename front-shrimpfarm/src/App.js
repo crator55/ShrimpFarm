@@ -13,9 +13,9 @@ function App(){
     <Router>
       <Fragment>
         <Header />
-          <div className="grid contenedor contenido-principal">
+          <div className="grid container content-principal">
             <Navegation />
-              <main className="caja-contenido col-9">
+              <main className="box-content col-9">
                 <Switch>
                   <Route exact path="/" component={Ponds}/>
                   <Route exact path="/pond/new" component={NewPond}/>

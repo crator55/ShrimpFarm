@@ -1,5 +1,5 @@
 import React,{Fragment,useState,useEffect} from 'react';
-import {withRouter} from 'react-router-dom';
+import {withRouter,Link} from 'react-router-dom';
 import clientAxios from '../../config/axios';
 import Swal from 'sweetalert2';
 function UpdatePond(props){
@@ -21,7 +21,7 @@ function UpdatePond(props){
         responseApi();
     },[id]);
 
-const sendPond =e =>{
+    const sendPond =e =>{
     e.preventDefault();
     clientAxios.put(`/ponds/${pond._id}`,pond)
     .then(
@@ -46,18 +46,18 @@ const sendPond =e =>{
         }
     );
 }
-const updateState= e =>{
-    pondData({
-        ...pond,
-        [e.target.name]:e.target.value
+    const updateState= e =>{
+        pondData({
+            ...pond,
+            [e.target.name]:e.target.value
 
-    })
-}
-const validatePond=()=>{
+        })
+    }
+    const validatePond=()=>{
     const {name,areaSize,location} = pond;
     let state= !name.length || !areaSize.toString().length||!location.length
     return state
-}
+    }
 
     return(
         <Fragment>
@@ -65,24 +65,21 @@ const validatePond=()=>{
             <form
                onSubmit={sendPond}
             >
-                <legend>Llena todos los campos</legend>
-
-                <div className="campo">
+            <legend>All fields are required!</legend>
+                <div className="field">
                         <label>Name:</label>
                         <input 
                         type="text" 
-                        placeholder="Name of the pond." 
                         name="name"
                         onChange={updateState}
                         value={pond.name}
                         />
                     </div>
 
-                    <div className="campo">
+                    <div className="field">
                         <label>Area:</label>
                         <input 
                         type="text" 
-                        placeholder="Area (in hectareas) of the pond" 
                         name="areaSize"
                         onChange={updateState}
                         
@@ -90,29 +87,31 @@ const validatePond=()=>{
                         />
                     </div>
 
-                    <div className="campo">
+                    <div className="field">
                         <label>Location:</label>
                         <input 
                         type="text" 
-                        placeholder="Location inside of the farm (Exm:A)" 
                         name="location"
                         onChange={updateState}
                         value={pond.location}
                         />
                     </div>
-                    <div className="enviar">
+                    <div className="send">
                         <input 
                         type="submit" 
-                        className="btn btn-azul" 
-                        value="Agregar Cliente"
+                        className="btn btn-blue" 
+                        value="Update pond"
                         disabled={validatePond()}
                         />
                     </div>
-                  
+                    <Link to={`/`} className="btn btn-yellow">
+                            <i className="fas fa-sign-out-alt"></i>
+                            Cancel
+                        </Link>
 
             </form>
         </Fragment>
         
     )
 }
-export default withRouter(UpdatePond);
+    export default withRouter(UpdatePond);

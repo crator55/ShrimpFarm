@@ -5,13 +5,13 @@ function FormFindPond(props){
     
 const[pond,savePond]=useState("");
 
-const updateState= e =>{
+    const updateState= e =>{
     savePond({
         ...pond,
         [e.target.name]:e.target.value
     })
 
-}
+    }
     const validatePond=()=>{
                 let state= pond.ponds===""||pond.ponds===undefined?true:false ;
                 return state  
@@ -20,13 +20,13 @@ const updateState= e =>{
     <form
     onSubmit={props.searchPond}
     >
-    <legend>Search a pond</legend>
+    <legend>Find a pond</legend>
 
-    <div className="campo">
+    <div className="field">
         <label>Ponds:</label>
             <input 
                 type="text" 
-                placeholder="search a pond by the name" 
+                placeholder="find a pond by the name" 
                 name="ponds"
                 onChange={updateState}
                 onInput={props.readData}
@@ -35,7 +35,7 @@ const updateState= e =>{
     <input 
         type="submit" 
         value="Find Pond" 
-        className="btn btn-azul btn-block"
+        className="btn btn-blue btn-block"
         disabled={validatePond()}
 
         />
