@@ -50,9 +50,9 @@ function DetailsFarms({farm}){
             <div className="colorFarm-farm">
                 <p className="ponds">Ponds: </p>
                 <ul>
-                    {farm.ponds.map(element=>
+                    {farm.ponds.map((element,index)=>
                         (
-                            <li key={farm._id+element._id}>
+                            <li key={index}>
                                 <p>Name: {element.pond.name}</p>
                                 <p>Area size: {element.pond.areaSize} [ha]</p>
                                 <p>Location: {element.pond.location}</p>
