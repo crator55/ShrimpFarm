@@ -1,13 +1,18 @@
 
 const Farms = require('../models/Farms');
+
 exports.getArea=(farm)=>{
     let size=0;
-    farm.forEach(element => {
+    let sizeFarm={};
+    if ( farm !== null && farm.length > 0) {
+      farm.forEach(element => {
         size+=element.pond.areaSize;
      });
-    const sizeFarm ={
+     sizeFarm ={
         TotalArea:size
     }
+  }
+    
   return sizeFarm;
 }
 
