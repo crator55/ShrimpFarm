@@ -71,6 +71,7 @@ function UpdatePond(props){
                         <input 
                         type="text" 
                         name="name"
+                        maxLength="30"
                         onChange={updateState}
                         value={pond.name}
                         />
@@ -81,6 +82,7 @@ function UpdatePond(props){
                         <input 
                         type="text" 
                         name="areaSize"
+                        maxLength="30"
                         onChange={updateState}
                         
                         value={pond.areaSize}
@@ -92,6 +94,7 @@ function UpdatePond(props){
                         <input 
                         type="text" 
                         name="location"
+                        maxLength="30"
                         onChange={updateState}
                         value={pond.location}
                         />

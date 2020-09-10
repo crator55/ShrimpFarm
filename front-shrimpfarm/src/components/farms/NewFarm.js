@@ -123,6 +123,7 @@ function NewFarm({history}){
                                 <input 
                                 type="text" 
                                 name="name"
+                                maxLength="30"
                                 onChange={updateState}
                                 />
                         </div>
@@ -131,6 +132,7 @@ function NewFarm({history}){
                                 <input 
                                 type="text" 
                                 name="location"
+                                maxLength="30"
                                 onChange={updateState}
                                 />
                         </div>

@@ -57,6 +57,7 @@ function NewPond({history}){
                         type="text" 
                         placeholder="Name of the pond." 
                         name="name"
+                        maxLength="30"
                         onChange={updateState}
                         />
                     </div>
@@ -67,6 +68,7 @@ function NewPond({history}){
                         type="number" 
                         placeholder="Area (in hectares) of the pond" 
                         name="areaSize"
+                        maxLength="30"
                         onChange={updateState}
                         step=".01"
                         />
@@ -78,6 +80,7 @@ function NewPond({history}){
                         type="text" 
                         placeholder="Location inside of the farm (Exam:Location A)" 
                         name="location"
+                        maxLength="30"
                         onChange={updateState}
                         />
                     </div>

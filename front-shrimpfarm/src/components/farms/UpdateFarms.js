@@ -126,6 +126,7 @@ function UpdateFarms(props){
                     <input 
                     type="text" 
                     name="name"
+                    maxLength="30"
                     onChange={updateState}
                     value={farm.name}
                     />
@@ -136,6 +137,7 @@ function UpdateFarms(props){
                     <input 
                     type="text" 
                     name="location"
+                    maxLength="30"
                     onChange={updateState}
                     value={farm.location}
                     />
