@@ -1,7 +1,7 @@
 
 const Farms = require('../models/Farms');
 
-exports.getArea=(farm)=>{
+exports.GetArea = (farm) => {
     let size=0;
     let sizeFarm={};
     if ( farm !== null && farm.length > 0) {
@@ -16,7 +16,7 @@ exports.getArea=(farm)=>{
   return sizeFarm;
 }
 
-exports.UpdateinDeletePond= async(id)=>{
+exports.UpdateinDeletePond = async(id) => {
   let status =false;
   const farm =await Farms.find({"ponds._id":id});
   farm.forEach(async elemen=>{

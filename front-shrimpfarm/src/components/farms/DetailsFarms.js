@@ -6,19 +6,18 @@ import {withRouter} from 'react-router-dom';
 function DetailsFarms({farm}){
 
 
-    const{name,location,_id}=farm;
+    const {name,location,_id} = farm;
+    const [area,saveFarms] = useState([]);
 
-    const [area,saveFarms]=useState([]);
-
-    useEffect(()=>{
-        const respondApi = async()=>{
+    useEffect( () => {
+        const respondApi = async() => {
             const respond = await clientAxios.get(`/farms/area/${farm._id}`);
             saveFarms(respond.data)
         }
         respondApi();
     },[farm])
 
-    const deletePond = idPond =>{
+    const DeletePond = idPond => {
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -74,7 +73,7 @@ function DetailsFarms({farm}){
                         <button 
                         type="button" 
                         className="btn btn-red btn-delete"
-                        onClick={()=> deletePond(_id)}
+                        onClick={()=> DeletePond(_id)}
                         >
                             <i className="fas fa-times"></i>
                             Delete Pond

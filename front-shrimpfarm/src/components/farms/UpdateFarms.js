@@ -8,47 +8,48 @@ import FormPonds from './FormPonds';
 
 function UpdateFarms(props){
     
-    const{id}=props.match.params;
-    const[farm,farmData]=useState({
+    const{id} = props.match.params;
+    const[farm,farmData] = useState({
         name:'',
         location:'',
         ponds:[]
     });
-    const [ponds,savePonds]=useState([]);
-    const [totalSize,saveTotal]=useState(0);
-    const validatePond=()=>{
+    const [ponds,savePonds] = useState([]);
+    const [totalSize,saveTotal] = useState(0);
+    const validatePond = () => {
         const {name,location} = farm;  
-        let state= !name.length || !location.length
+        let state = !name.length || !location.length
         return state
     }
     useEffect(
         ()=>{
-            const responseApi= async ()=>{
-                const query= await clientAxios.get(`/farms/${id}`);
+            const responseApi = async () => {
+                const query = await clientAxios.get(`/farms/${id}`);
                 farmData(query.data);
             }
         responseApi();
             },[id]);
     useEffect(
         ()=>{
-            const updateTotalSize=()=>{
-                if (ponds.length===0) {
+            const updateTotalSize = () => {
+                if (ponds.length === 0) {
                     saveTotal(0);
                     return;
                 }
                 let newTotal=0;
-                ponds.map(pond=>newTotal+=(pond.areaSize));
+                ponds.map(pond => newTotal += (pond.areaSize));
                 saveTotal(newTotal);
             }
             updateTotalSize();
     });
-    const sendFarm =e =>{
+    
+    const sendFarm = e => {
         e.preventDefault();
-        farm.ponds=ponds;
+        farm.ponds = ponds;
         clientAxios.put(`/farms/${farm._id}`,farm)
         .then(
-            res=>{
-                if (res.status!==200) {
+            res => {
+                if (res.status !== 200) {
                     Swal.fire({
                         type:'error',
                         text:'Was an error inserting the new farm',
@@ -68,19 +69,21 @@ function UpdateFarms(props){
             }
         );
     }
-    const updateState= e =>{
+
+    const updateState= e => {
     farmData({
             ...farm,
             [e.target.name]:e.target.value
         })
     }
-    const [search,saveSearch]=useState('');
-    const searchPond = async e=>{
+    const [search,saveSearch] = useState('');
+
+    const searchPond = async e => {
         e.preventDefault();
         const respond = await clientAxios.post(`/ponds/find/${search}`);
         if (respond.data[0]) {
-            let pondRespond= respond.data[0];
-            pondRespond.pond=respond.data[0]._id;
+            let pondRespond = respond.data[0];
+            pondRespond.pond = respond.data[0]._id;
             savePonds([...ponds,pondRespond]);
         }
         else{
@@ -91,11 +94,11 @@ function UpdateFarms(props){
         })
         }
     }
-    const readData =e=>{
+    const readData = e => {
         saveSearch(e.target.value);
         }
-        const deletePond=id=>{
-            const allPonds= ponds.filter(pond=>pond.pond !==id);
+        const DeletePond= id => {
+            const allPonds = ponds.filter(pond => pond.pond !== id);
             savePonds(allPonds);
         }    
     return(   
@@ -105,11 +108,11 @@ function UpdateFarms(props){
             readData={readData}
             />
              <ul className="summary">
-                    {ponds.map((pond, index)=>(
+                    {ponds.map((pond, index) => (
                     <FormPonds
                         key={index}
                         pond={pond}
-                        deletePond={deletePond}
+                        DeletePond={DeletePond}
                     />
                     ))}
                 </ul>

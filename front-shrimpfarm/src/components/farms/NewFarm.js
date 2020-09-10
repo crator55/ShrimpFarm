@@ -4,34 +4,38 @@ import FormPonds from './FormPonds';
 import clientAxios from '../../config/axios';
 import Swal from 'sweetalert2';
 import {withRouter,Link} from 'react-router-dom';
+
 function NewFarm({history}){
-    const [search,saveSearch]=useState('');
-    const [ponds,savePonds]=useState([]);
-    const [totalSize,saveTotal]=useState(0);
-    const[farmtags,saveFarm]=useState({
+
+    const [search,saveSearch] = useState('');
+    const [ponds,savePonds] = useState([]);
+    const [totalSize,saveTotal] = useState(0);
+    const[farmtags,saveFarm] = useState({
         name:'',
         location:''
     });
+
     useEffect(
         ()=>{
-            const updateTotalSize=()=>{
-                if (ponds.length===0) {
+            const updateTotalSize = () => {
+                if (ponds.length === 0) {
                     saveTotal(0);
                     return;
                 }
                 let newTotal=0;
-                ponds.map(pond=>newTotal+=(pond.areaSize));
+                ponds.map(pond => newTotal += (pond.areaSize));
                 saveTotal(newTotal);
             }
         updateTotalSize();
            
     },[ponds])
-   const searchPond = async e=>{
+
+   const searchPond = async e => {
        e.preventDefault();
        const respond = await clientAxios.post(`/ponds/find/${search}`);
        if (respond.data[0]) {
-           let pondRespond= respond.data[0];
-           pondRespond.pond=respond.data[0]._id;
+           let pondRespond = respond.data[0];
+           pondRespond.pond = respond.data[0]._id;
            savePonds([...ponds,pondRespond]);
        }
        else{
@@ -43,16 +47,16 @@ function NewFarm({history}){
        }
    }
 
-   const deletePond=id=>{
-    const allPonds= ponds.filter(pond=>pond.pond !==id);
-    savePonds(allPonds);
-   }
-   const readData =e=>{
-    saveSearch(e.target.value);
+    const DeletePond = id => {
+        const allPonds = ponds.filter(pond => pond.pond !== id);
+        savePonds(allPonds);
     }
 
-   
-    const submitFarm = async e =>{
+    const readData = e => {
+        saveSearch(e.target.value);
+    }
+
+    const submitFarm = async e => {
         e.preventDefault();
         const farm ={
 
@@ -62,7 +66,7 @@ function NewFarm({history}){
             "ponds":ponds
         }
         const respond= await clientAxios.post('/farms',farm);
-        if (respond.status===200) {
+        if (respond.status === 200) {
             Swal.fire({
                 icon: 'success',
                 title: respond.data.message,
@@ -77,12 +81,12 @@ function NewFarm({history}){
             })
         }
     }
-    const validatePond=()=>{
+    const validatePond = () => {
         const {name,location} = farmtags;  
         let state= !name.length || !location.length
         return state
     }
-    const updateState= e =>{
+    const updateState = e => {
         saveFarm({
             ...farmtags,
             [e.target.name]:e.target.value
@@ -103,7 +107,7 @@ function NewFarm({history}){
                     <FormPonds
                         key={index}
                         pond={pond}
-                        deletePond={deletePond}
+                        DeletePond={DeletePond}
                     />
                     ))}
                 </ul>

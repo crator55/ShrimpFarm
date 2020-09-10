@@ -1,9 +1,9 @@
 const Ponds = require('../models/Ponds');
-const Farms = require('../models/Farms');
+
 const farmsFunctions = require('../functions/farms');
 
 
-exports.newPond = async(req,res,next)=>{
+exports.newPond = async(req,res,next) => {
 
 const Pond = new Ponds(req.body);
     try {
@@ -15,7 +15,7 @@ const Pond = new Ponds(req.body);
     }
 };
 
-exports.showPonds =async(req,res,next)=>{
+exports.showPonds = async(req,res,next) => {
 
     try {
         const ponds = await Ponds.find({});
@@ -26,7 +26,7 @@ exports.showPonds =async(req,res,next)=>{
     }
 }
 
-exports.showPond = async(req,res,next)=>{
+exports.showPond = async(req,res,next) => {
 
     try {
         const pond =await Ponds.findById(req.params.idPond);
@@ -41,7 +41,7 @@ exports.showPond = async(req,res,next)=>{
     }
 }
 
-exports.updatePond =async(req,res,next)=>{
+exports.updatePond = async(req,res,next) => {
 
     try {
         const pond = await Ponds.findOneAndUpdate(
@@ -56,7 +56,7 @@ exports.updatePond =async(req,res,next)=>{
     }
 }
 
-exports.deletePond= async(req,res,next)=>{
+exports.DeletePond = async(req,res,next) => {
     try {
       if (  !farmsFunctions.UpdateinDeletePond(req.params.idPond)) {
         res.json({message: 'Pond did not founded.'});
@@ -65,7 +65,7 @@ exports.deletePond= async(req,res,next)=>{
         await Ponds.findOneAndDelete(
                 {_id:req.params.idPond}
             );
-              
+               
             res.json({message:"Pond succesfuly deleted!"})
     } catch (error) {
         console.log(error);
@@ -73,7 +73,7 @@ exports.deletePond= async(req,res,next)=>{
     }
 }
 
-exports.findPond= async(req,res,next)=>{
+exports.FindPond = async(req,res,next) => {
     try {
         const {query} =req.params
        const pond= await Ponds.find(

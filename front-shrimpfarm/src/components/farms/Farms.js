@@ -5,11 +5,11 @@ import {Link} from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
 function Farms (){
     
-    const [farms,saveFarms]=useState([]);
+    const [farms,saveFarms] = useState([]);
     
-    useEffect(()=>{
-            const respondApi = async()=>{
-
+    useEffect( () =>
+    {
+            const respondApi = async() => {
                 const respond = await clientAxios.get('/farms');
                 saveFarms(respond.data)
             }

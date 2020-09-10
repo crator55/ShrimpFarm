@@ -6,12 +6,13 @@ function Ponds (){
 
     const [ponds,savePonds]=useState([]);
 
-    const responseApi= async ()=>{
-        const query= await clientAxios.get('/ponds');
+    const responseApi = async ()=> {
+        const query = await clientAxios.get('/ponds');
         savePonds(query.data);
     }
+    
     useEffect(
-        ()=>{
+        () => {
         responseApi();
     },[ponds])
     return(
@@ -24,7 +25,7 @@ function Ponds (){
             </Link>
             <ul className="list-ponds">
                 {
-                    ponds.map(pond=>
+                    ponds.map(pond =>
                        (<Pond 
                         key={pond._id}
                         pond={pond} />) 

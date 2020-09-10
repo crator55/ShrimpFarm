@@ -4,8 +4,8 @@ import clientAxios from '../../config/axios';
 import Swal from 'sweetalert2';
 function UpdatePond(props){
 
-    const{id}=props.match.params;
-    const[pond,pondData]=useState({
+    const{id} = props.match.params;
+    const[pond,pondData] = useState({
         name:'',
         areaSize:0,
         location:''
@@ -14,19 +14,19 @@ function UpdatePond(props){
     useEffect(
         ()=>{
 
-            const responseApi= async ()=>{
-                const query= await clientAxios.get(`/ponds/${id}`);
+            const responseApi = async ()=> {
+                const query = await clientAxios.get(`/ponds/${id}`);
                 pondData(query.data);
             }
         responseApi();
     },[id]);
 
-    const sendPond =e =>{
+    const sendPond = e => {
     e.preventDefault();
     clientAxios.put(`/ponds/${pond._id}`,pond)
     .then(
         res=>{
-            if (res.status!==200) {
+            if (res.status !== 200) {
                 Swal.fire({
                     type:'error',
                     text:'Was an error inserting the new pond',
@@ -45,17 +45,17 @@ function UpdatePond(props){
               props.history.push('/');
         }
     );
-}
-    const updateState= e =>{
+    }
+    const updateState = e => {
         pondData({
             ...pond,
             [e.target.name]:e.target.value
 
         })
     }
-    const validatePond=()=>{
+    const validatePond = () => {
     const {name,areaSize,location} = pond;
-    let state= !name.length || !areaSize.toString().length||!location.length
+    let state = !name.length || !areaSize.toString().length||!location.length
     return state
     }
 

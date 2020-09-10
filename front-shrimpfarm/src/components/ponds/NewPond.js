@@ -4,24 +4,27 @@ import {withRouter,Link} from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 function NewPond({history}){
-    const[pond,savePond]=useState({
+    const[pond,savePond] = useState({
         name:'',
         areaSize:'',
         location:''
     });
-    const updateState= e =>{
+
+    const updateState = e => {
         savePond({
             ...pond,
             [e.target.name]:e.target.value
 
         })
     }
-    const validatePond=()=>{
+
+    const validatePond = () => {
         const {name,areaSize,location} = pond;
         let state= !name.length || !areaSize.length||!location.length
         return state
     }
-    const addPond =e =>{
+    
+    const addPond = e => {
         e.preventDefault();
         pondAxios.post('/ponds',pond)
             .then(res=>{

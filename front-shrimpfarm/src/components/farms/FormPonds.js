@@ -1,6 +1,7 @@
 import React from 'react';
+
 function FormPonds(props){
-    const{pond,deletePond} =props
+    const{pond,DeletePond} = props
     return(
         <li>
         <div className="text-color">
@@ -14,7 +15,7 @@ function FormPonds(props){
             <button 
             type="button" 
             className="btn btn-red"
-            onClick={()=>deletePond(pond.pond)}
+            onClick={()=>DeletePond(pond.pond)}
             >
                 <i className="fas fa-minus-circle"></i>
                     Delete Pond

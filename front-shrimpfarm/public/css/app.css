@@ -273,6 +273,7 @@ h2 {
 .color p,
 .farm p {
     margin: 2rem 0;
+
 }
 .pond .name,
 .color .name,
@@ -286,6 +287,7 @@ h2 {
 .summary .area{
     font-weight: 700;
     font-size: 2rem;
+    white-space: pre-wrap;
 }
 .farm .total {
     font-weight: 700;

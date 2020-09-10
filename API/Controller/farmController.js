@@ -1,7 +1,7 @@
 const Farms = require('../models/Farms');
 const farmsFunctions = require('../functions/farms');
 
-exports.newFarm = async(req,res,next)=>{
+exports.newFarm = async(req,res,next) => {
 
     const farm = new Farms(req.body);
 
@@ -14,7 +14,7 @@ exports.newFarm = async(req,res,next)=>{
     }
 };
 
-exports.showFarms =async(req,res,next)=>{
+exports.showFarms = async(req,res,next) => {
 
     try {
         const farms = await Farms.find({}).populate({
@@ -28,7 +28,7 @@ exports.showFarms =async(req,res,next)=>{
     }
 }
 
-exports.showFarm = async(req,res,next)=>{
+exports.showFarm = async(req,res,next) => {
 
     try {
         const farm =await Farms.findById(req.params.idFarm).populate({
@@ -46,7 +46,7 @@ exports.showFarm = async(req,res,next)=>{
     }
 }
 
-exports.updateFarm =async(req,res,next)=>{
+exports.updateFarm = async(req,res,next) => {
 
     try {
         const farm = await Farms.findOneAndUpdate(
@@ -64,7 +64,7 @@ exports.updateFarm =async(req,res,next)=>{
     }
 }
 
-exports.deleteFarm= async(req,res,next)=>{
+exports.deleteFarm = async(req,res,next) => {
     try {
         await Farms.findOneAndDelete(
             {_id:req.params.idFarm}
@@ -76,7 +76,7 @@ exports.deleteFarm= async(req,res,next)=>{
     }
 }
 
-exports.getArea =async(req,res,next)=>{
+exports.GetArea = async(req,res,next) => {
     try {
         const farm =await Farms.findById(req.params.idFarm).populate({
             path:'ponds.pond',
@@ -86,7 +86,7 @@ exports.getArea =async(req,res,next)=>{
             res.json({message: 'Farm did not founded.'});
             next();
         }
-        res.json(farmsFunctions.getArea(farm.ponds));
+        res.json(farmsFunctions.GetArea(farm.ponds));
     } catch (error) {
         console.log(error);
         next();

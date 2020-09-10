@@ -6,7 +6,8 @@ import clientAxios from '../../config/axios';
 function Pond({pond}){
 
   const{_id,areaSize,location,name}=pond;
-  const deletePond = idPond =>{
+  
+  const DeletePond = idPond => {
     Swal.fire({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
@@ -50,7 +51,7 @@ function Pond({pond}){
                         <button 
                         type="button" 
                         className="btn btn-red btn-delete"
-                        onClick={()=> deletePond(_id)}
+                        onClick={()=> DeletePond(_id)}
                         >
                             <i className="fas fa-times"></i>
                             Delete Pond
